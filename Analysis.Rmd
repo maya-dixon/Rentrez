@@ -1,0 +1,99 @@
+---
+title: "Analysis.Rmd"
+author: "Maya Dixon"
+date: "11/02/2021"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(stringr)
+library(knitr)
+```
+
+
+## Import the sequences file
+
+```{r}
+Sequences <- read.csv("./Sequences.csv")
+```
+
+## Count the number of each base pair (A, T, C and G), in each of the three sequences
+
+```{r}
+str_count(Sequences$Sequence, pattern = "A")
+str_count(Sequences$Sequence, pattern = "T")
+str_count(Sequences$Sequence, pattern = "G")
+str_count(Sequences$Sequence, pattern = "C")
+```
+
+## Print out each sequence.
+
+```{r}
+print(Sequences$Sequence)
+```
+
+## Print out the number of each nucleotide as a table for each of the three sequences.
+
+```{r}
+tab <- matrix(c(154,155,154,114,114,115,131,131,131,82,81,81),ncol=3,byrow=TRUE)
+colnames(tab) <- c("Seq 1","Seq 2","Seq 3")
+rownames(tab) <- c("A","T","G","C")
+tab<- as.table(tab)
+print(tab)
+```
+
+Include an image of a bacteria from the internet, and a link to the Wikipedia page about Borrelia burgdorferi
+
+
+![Picture of bacteria](./bacteria.jpeg)
+
+[Link to Borrelia burgdorferi Wikipedia](https://en.wikipedia.org/wiki/Borrelia_burgdorferi#:~:text=Borrelia%20burgdorferi%20is%20a%20bacterial,known%20to%20cause%20the%20disease).)
+
+## Calculate GC Content (% of nucleotides that are G or C) and create a final table showing GC content for each sequence ID,.
+
+```{r}
+GC_tab <- matrix(c("HQ433692.1", "44.28%", "HQ433694.1", "44.07%", "HQ433691.1", "44.07%"),ncol=2,byrow=TRUE)
+colnames(GC_tab) <- c("Sequence ID","GC Content")
+rownames(tab) <- c("", "1","2","3")
+GC_tab<- as.table(GC_tab)
+print(GC_tab)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
